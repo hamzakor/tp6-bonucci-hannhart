@@ -12,10 +12,10 @@ Pour formater en NTFS la partition 2 : ``mkfs.ntfs /dev/sdb2``
 ### Exercice 2. Partitionnement LVM
 1.  On édite ensuite le fichier */etc/fstab* et on supprime les lignes de *sdb*
 2.  ``fdisk /dev/sdb`` puis **d** puis selection des partitions à supprimer, **w**, puis reboot. Pour créer la partition LVM ``fdisk /dev/sdb`` puis **n**, puis **p**, puis **1**, puis laissez par default (x2), puis **t**, puis 8e, puis **w**.
-3.  ``pvcreate /dev/sdb1``
-4.  ``vgcreate volume1 /dev/sdb1``
-5.  
-6.  
+3.  ``pvcreate /dev/sdb1`` pour créer un volume physique LVM.
+4.  ``vgcreate volume1 /dev/sdb1`` pour créer un groupe de volumes.
+5.  ``lvcreate -l 100%FREE volume1 -n lvData`` pour créer un volume logique appelé *lvData* occupant l’intégralité de l’espace disque disponible.
+6.  ``fdisk /dev/volume1/lvData`` puis création d'un seule partition prenant toute la place. ``mkfs.ext4 /dev/volume1/lvData`` pour la formater. On édite ensuite le fichier */etc/fstab* pour le montage automatique.
 7.  
 8.  
 9.  
