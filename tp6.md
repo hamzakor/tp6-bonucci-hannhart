@@ -5,7 +5,7 @@
 4.  Pour formater en linux la partition 1 : ``mkfs.ext4 /dev/sdb1``
 Pour formater en NTFS la partition 2 : ``mkfs.ntfs /dev/sdb2``
 5.  La commande ``df -T`` ne marche pas car les partitions ne sont pas montées
-6.  
+6.  ``mkdir /mnt/data /mnt/win`` créer le points de montages puis ``mount /etc/sdb1 /mnt/data`` et ``mount /etc/sdb1 /mnt/win`` pour monter les partitions. On édite ensuite le fichier */etc/fstab*
 7.  
 8.  
 9.  
